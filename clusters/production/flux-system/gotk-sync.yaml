@@ -17,8 +17,7 @@ metadata:
   name: budget-repo
   namespace: flux-system
 spec:
-  interval: 1m0s
-  targetNamespace: budget
+  interval: 10m0s
   path: ./clusters/production
   prune: true
   sourceRef:
