@@ -7,7 +7,7 @@ spec:
   interval: 10m0s
   targetNamespace: budget
   path: ./apps/production
-
+  prune: false
   sourceRef:
     kind: GitRepository
     name: budget-repo

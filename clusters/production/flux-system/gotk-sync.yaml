@@ -19,6 +19,7 @@ metadata:
 spec:
   interval: 10m0s
   path: ./clusters/production
+  prune: false
   sourceRef:
     kind: GitRepository
     name: budget-repo
