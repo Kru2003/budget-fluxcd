@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
         - name: budget-app
-          image: krupanshi20/budget:main-00ad7a5-1750146855 # {"$imagepolicy": "flux-system:budget-policy"}
+          image: krupanshi20/budget:main-f9a6ea3-1750228296 # {"$imagepolicy": "flux-system:budget-policy"}
           ports:
             - containerPort: 80
               name: app-port
