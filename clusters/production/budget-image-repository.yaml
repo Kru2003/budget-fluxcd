@@ -18,7 +18,7 @@ spec:
     extract: ""
     pattern: ^main-.*
   imageRepositoryRef:
-    name: krupanshi20/budget
+    name: budget
   policy:
-    semver:
-      range: "*"
+    alphabetical:
+      order: asc
