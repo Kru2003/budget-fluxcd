@@ -19,3 +19,6 @@ spec:
     pattern: ^main-.*
   imageRepositoryRef:
     name: krupanshi20/budget
+  policy:
+    semver:
+      range: "*"
