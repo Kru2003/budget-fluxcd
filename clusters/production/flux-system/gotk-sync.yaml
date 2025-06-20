@@ -18,8 +18,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m0s
+  targetNamespace: budget
   path: ./clusters/production
   sourceRef:
     kind: GitRepository
     name: budget-repo
-    namespace: budget
