@@ -1,0 +1,21 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: budget
+  namespace: flux-system
+spec:
+  image: krupanshi20/budget
+  interval: 5m0s
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: budget-policy
+  namespace: flux-system
+spec:
+  filterTags:
+    extract: ""
+    pattern: ^main-.*
+  imageRepositoryRef:
+    name: krupanshi20/budget
