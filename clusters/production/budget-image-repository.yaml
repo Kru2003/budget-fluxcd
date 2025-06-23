@@ -15,10 +15,10 @@ metadata:
   namespace: flux-system
 spec:
   filterTags:
-    extract: ""
-    pattern: ^main-.*
+    pattern: "^main-[a-fA-F0-9]+-(?P<ts>.*)"
+    extract: "$ts"
   imageRepositoryRef:
     name: budget
   policy:
-    alphabetical:
+    numerical:
       order: asc
