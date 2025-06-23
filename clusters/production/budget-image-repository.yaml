@@ -22,3 +22,5 @@ spec:
   policy:
     numerical:
       order: asc
+  digestReflectionPolicy: IfNotPresent
+  interval: 10m
