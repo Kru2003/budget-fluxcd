@@ -6,8 +6,6 @@ metadata:
   namespace: flux-system
 spec:
   image: krupanshi20/budget
-  secretRef:
-    name: secret-budget-docker
   interval: 5m0s
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta2
