@@ -28,6 +28,8 @@ spec:
       labels:
         app: budget
     spec:
+      imagePullSecret:
+        - name: secret-budget-docker
       containers:
         - name: budget-app
           image: krupanshi20/budget:main-790a552-1750745571@sha256:271158456553992018ca4aaad1fd68c2b5f7757dbfc23c5a2440924217464aa3 # {"$imagepolicy": "flux-system:budget-policy"}
