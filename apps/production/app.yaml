@@ -28,7 +28,7 @@ spec:
       labels:
         app: budget
     spec:
-      imagePullSecret:
+      imagePullSecrets:
         - name: secret-budget-docker
       containers:
         - name: budget-app
