@@ -1,5 +1,5 @@
 resources:
-  - apps.yaml
   - budget-image-repository.yaml
   - budget-image-repository-automation.yaml
   - docker-hub-secret.yaml
+  - release.yaml

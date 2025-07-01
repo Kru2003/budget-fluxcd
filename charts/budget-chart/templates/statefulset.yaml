@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "budget-chart.fullname" . }}-data
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "budget-chart.labels" . | nindent 4 }}
+spec:
+  serviceName: {{ include "budget-chart.fullname" . }}-headless-service
+  replicas: {{ .Values.statefulset.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "budget-chart.statefulsetSelectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "budget-chart.statefulsetSelectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ include "budget-chart.fullname" . }}-data
+          image: "{{ .Values.statefulset.image.repository }}:{{ .Values.statefulset.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.statefulset.image.pullPolicy }}
+          envFrom:
+            - configMapRef:
+                name: {{ include "budget-chart.fullname" . }}-config
+            - secretRef:
+                name: {{ include "budget-chart.fullname" . }}-secret
+          ports:
+            - name: database-port
+              containerPort: {{ .Values.statefulset.containerPort | default "3306" }}
+          {{- with .Values.resources }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.volumeMounts }}
+          volumeMounts:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+      {{- with .Values.volumes }}
+      volumes:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+  volumeClaimTemplates:
+    - metadata:
+        name: volume
+      spec:
+        accessModes:
+          - {{ .Values.statefulset.pvc.accessMode | default "ReadWriteOnce" }}
+        resources:
+          requests:
+            storage: {{ .Values.statefulset.pvc.request | default "5Gi" }}
+        storageClassName: {{ .Values.statefulset.pvc.storageclass | default "local-path" }}

@@ -1,8 +1,0 @@
-resources:
-  - ../base
-  - app.yaml
-  - app_statefulset.yaml
-  - configmap.yaml
-  - secret.yaml
-  - ingress.yaml
-  - docker-hub-secret.yaml

@@ -1,0 +1,17 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRelease
+metadata:
+  name: budget-helm-release
+  namespace: flux-system
+spec:
+  releaseName: budget-release
+  targetNamespace: budget
+  chart:
+    spec:
+      chart: .charts/budget-chart
+      version: 0.1.x
+      sourceRef:
+        kind: GitRepository
+        name: budget-repo
+      interval: 1h # this interval is for fetching version of chart
+  interval: 1h # this interval is for diff
