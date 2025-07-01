@@ -15,3 +15,8 @@ spec:
         name: budget-repo
       interval: 1h # this interval is for fetching version of chart
   interval: 1h # this interval is for diff
+  values:
+    imagePullSecrets:
+      - name: secret-budget-docker
+    image:
+      tag: main-8a9e24e-1750242271 # {"$imagepolicy": "flux-system:budget-policy"}

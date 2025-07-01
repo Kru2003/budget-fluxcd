@@ -18,13 +18,12 @@ image:
 # Secrets must be manually created in the namespace.
 # ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 # Example:
-# imagepullSecrets:
+# imagePullSecrets:
 #   - name: myRegistryKeySecretName
 imagePullSecrets: []
 # This is to override the chart name.
 nameOverride: ""
 fullnameOverride: ""
-
 
 # This is for setting up a service more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/
 service:
@@ -78,7 +77,6 @@ resources: {}
   # requests:
   #   cpu: 100m
   #   memory: 128Mi
-
 
 # Additional volumes on the output Deployment definition.
 volumes: []
