@@ -19,4 +19,4 @@ spec:
     imagePullSecrets:
       - name: secret-budget-docker
     image:
-      tag: main-8a9e24e-1750242271 # {"$imagepolicy": "flux-system:budget-policy"}
+      tag: krupanshi20/budget:main-790a552-1750830604@sha256:67ba07eb82bc7656e31f1a82afc1239472ff550fe61a5066b82ad1332b824594 # {"$imagepolicy": "flux-system:budget-policy"}
