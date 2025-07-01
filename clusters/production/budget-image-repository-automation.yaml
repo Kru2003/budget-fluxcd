@@ -22,5 +22,5 @@ spec:
     kind: GitRepository
     name: budget-repo
   update:
-    path: ./apps/production
+    path: ./clusters/production
     strategy: Setters
