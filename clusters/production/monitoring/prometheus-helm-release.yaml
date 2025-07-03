@@ -10,6 +10,12 @@ spec:
     spec:
       chart: kube-prometheus-stack
       version: 75.3.0
-    sourceRef:
-      kind: HelmRepository
-      name: prometheus-helm-repository
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-helm-repository
+  values:
+    server:
+      ingress:
+        enabled: true
+        hosts:
+          - prometheus.budget.local
