@@ -14,8 +14,9 @@ spec:
         kind: HelmRepository
         name: prometheus-helm-repository
   values:
-    server:
+    prometheus:
       ingress:
         enabled: true
+        ingressClassName: nginx
         hosts:
           - prometheus.budget.local
