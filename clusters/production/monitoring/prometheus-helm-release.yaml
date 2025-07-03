@@ -19,4 +19,13 @@ spec:
         enabled: true
         ingressClassName: nginx
         hosts:
-          - prometheus.budget.local
+          - prometheus.local
+        paths:
+          - "/"
+        pathType: Prefix
+    grafana:
+      ingress:
+        enabled: true
+        ingressClassName: nginx
+        hosts:
+          - grafana.local
