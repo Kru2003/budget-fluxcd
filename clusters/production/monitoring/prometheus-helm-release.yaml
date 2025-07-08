@@ -37,32 +37,42 @@ spec:
           group_by: ["alertname", "cluster", "service"]
           group_wait: 30s
           group_interval: 5m
-          repeat_interval: 1h
+          repeat_interval: 3h
           receiver: "mattermost"
           routes:
             - receiver: "mattermost"
               matchers:
                 - severity=warning
                 - severity=critical
+            - receiver: "null"
+              matchers:
+                - severity=none
         receivers:
+          - name: "null"
           - name: "mattermost"
             slack_configs:
               - api_url: https://talk.improwised.com/hooks/yupgbkdfafn37job4xh3z5n1ky
 
-    additionalPrometheusRuleMap:
+    additionalPrometheusRulesMap:
       budget-app-alerts:
         groups:
           - name: BudgetAppAlerts
             rules:
-              - alert: ImageChanged
-                expr: |
-                  count(
-                  kube_pod_container_info{namespace='budget'} unless
-                  kube_pod_container_info{namespace='budget'} offset 2m
-                  ) by (namespace, pod, container, image) > 0
-                for: 1m
-                labels:
-                  severity: warning
-                annotations:
-                  summary: "Container image changed"
-                  description: "The image of container in pod {{ $labels.pod }} has changed to {{ $labels.image }}"
+            - alert: DeploymentSpecChanged
+              expr: |
+                changes(kube_deployment_status_observed_generation{namespace='budget'}[5m]) > 0
+              for: 1m
+              labels:
+                severity: warning
+              annotations:
+                summary: "Deployment {{ $labels.deployment }} has been updated"
+                description: "The configuration for deployment '{{ $labels.deployment }}' in namespace '{{ $labels.namespace }}' has changed. This indicates a new rollout has likely started. Current generation: {{ $value }}."
+            - alert: DeploymentDeleted
+              expr: |
+                absent(kube_deployment_created{namespace='budget'})
+              for: 5m
+              labels:
+                severity: critical
+              annotations:
+                summary: "Kubernetes Deployment {{ $labels.namespace }}/{{ $labels.deployment }} has been deleted."
+                description: "The 'kube_deployment_created' metric for deployment '{{ $labels.deployment }}' in namespace '{{ $labels.namespace }}' is no longer present. This indicates the Deployment has likely been deleted. Please verify."
