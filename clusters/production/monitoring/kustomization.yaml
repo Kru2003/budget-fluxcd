@@ -2,4 +2,3 @@ resources:
   - namespace.yaml
   - prometheus-helm-repository.yaml
   - prometheus-helm-release.yaml
-  - prometheus-rule.yaml
