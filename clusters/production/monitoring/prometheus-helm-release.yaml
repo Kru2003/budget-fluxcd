@@ -37,18 +37,14 @@ spec:
           group_by: ["alertname", "cluster", "service"]
           group_wait: 30s
           group_interval: 5m
-          repeat_interval: 3h
+          repeat_interval: 12h
           receiver: "mattermost"
           routes:
             - receiver: "mattermost"
               matchers:
                 - severity=warning
                 - severity=critical
-            - receiver: "null"
-              matchers:
-                - severity=none
         receivers:
-          - name: "null"
           - name: "mattermost"
             slack_configs:
               - api_url: https://talk.improwised.com/hooks/yupgbkdfafn37job4xh3z5n1ky
