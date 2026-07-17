@@ -4,16 +4,16 @@ metadata:
   name: prometheus
   namespace: monitoring
 spec:
-  interval: 1h
+  interval: 10m
   targetNamespace: monitoring
   chart:
     spec:
       chart: kube-prometheus-stack
-      version: 75.3.0
+      version: 87.17.0
       sourceRef:
         kind: HelmRepository
         name: prometheus
-        # namespace: flux-system
+        namespace: flux-system
   values:
     prometheus:
       ingress:
@@ -39,16 +39,16 @@ spec:
           group_wait: 30s
           group_interval: 5m
           repeat_interval: 12h
-          receiver: "mattermost"
+          receiver: "mail"
           routes:
-            - receiver: "mattermost"
+            - receiver: "mail"
               matchers:
                 - severity=warning
                 - severity=critical
         receivers:
-          - name: "mattermost"
-            slack_configs:
-              - api_url: https://talk.improwised.com/hooks/yupgbkdfafn37job4xh3z5n1ky
+          - name: "mail"
+            email_configs:
+              - to: "kruvaishnav20@gmail.com"
 
     additionalPrometheusRulesMap:
       budget-app-alerts:
