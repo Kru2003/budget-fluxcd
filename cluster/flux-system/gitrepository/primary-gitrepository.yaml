@@ -10,4 +10,6 @@ spec:
   url: ssh://git@github.com/Kru2003/budget-fluxcd.git
   ref:
     branch: main
+  ignore: |
+    cluster/monitoring
     
