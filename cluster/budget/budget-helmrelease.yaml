@@ -4,6 +4,7 @@ metadata:
   name: budget
   namespace: budget
 spec:
+  releaseName: budget
   chart:
     spec:
       chart: ./charts/budget-chart
@@ -19,3 +20,8 @@ spec:
       - name: image-registry
     image:
       tag: main-790a552-1751522394 # {"$imagepolicy": "budget:budget:tag"}
+    statefulset:
+      pvc:
+        request: 100Mi
+    ingress:
+      enabled: false
