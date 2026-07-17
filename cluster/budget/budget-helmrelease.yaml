@@ -1,22 +1,20 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: budget-helm-release
-  namespace: flux-system
+  name: budget
+  namespace: budget
 spec:
-  releaseName: budget-release
-  targetNamespace: budget
   chart:
     spec:
       chart: ./charts/budget-chart
       version: 0.1.x
       sourceRef:
         kind: GitRepository
-        name: budget-repo
+        name: primary
       interval: 1h # this interval is for fetching version of chart
-  interval: 1h # this interval is for diff
+  interval: 10m # this interval is for diff
   values:
     imagePullSecrets:
-      - name: secret-budget-docker
+      - name: image-registry
     image:
-      tag: main-790a552-1751522394 # {"$imagepolicy": "flux-system:budget-policy:tag"}
+      tag: main-790a552-1751522394 # {"$imagepolicy": "budget:budget:tag"}

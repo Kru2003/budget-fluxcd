@@ -1,0 +1,10 @@
+apiVersion: image.toolkit.fluxcd.io/v1
+kind: ImageRepository
+metadata:
+  name: budget
+  namespace: budget
+spec:
+  image: krupanshi20/budget
+  secretRef:
+    name: image-registry
+  interval: 10m

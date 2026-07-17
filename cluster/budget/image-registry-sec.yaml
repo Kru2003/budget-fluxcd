@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: image-registry
+    namespace: budget
+type: kubernetes.io/dockerconfigjson
+data:
+    .dockerconfigjson: ENC[AES256_GCM,data:cFFzYIiFk/YMidmx8RgVN1ZOv+RCjB02lCjBZRa3jeQbSKjw/AYic4W57L/inHzqXb8SXV4BGWHAZqFLzE9O3VoLdC+DLC5vd4o1Ne3rSw7IMEzQWqDg2m+Pcxmrboz+Xqf3y2ZTenmobhhgua+aEpUCsO6F2uJNzs7cb/3EYoGf8j1tpj/XwRlG7lUduy41x1ked4mFWdOr28vAO9x/wOyGDH4dEDAuEbMH9r7R6E1M9Ekj1OFIE7H3RBv5IH+QHdKVdR1fsjsAiP3apkJvuwcX4IJz6i+V8j3bwhJHI7LYp5P/P8VXQDxmj5WbNpZjr9s3Q3UXqAOh5NkNyLJf1FGXRzYt0tuehls79UYKxZ8loxLOAzMirtJOWdPin3wQtg6dCg==,iv:QmHwFCIxMSQUU0Lb/uxY7MjxoSTdxCFuPjpc+uVQ/XQ=,tag:n1hdDcmWtk1V82gI9lpuZA==,type:str]
+sops:
+    age:
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBDRlh5M3V2UVg1YmpGWmRX
+            SjBlRTdqaTFHZ0lXdHdsb0tHckJmVGVMNWdVCjRQRDdiQnMwRFBoZ1ZCSXdYZnRP
+            cDNnMlJhNG5xRzJrdko1aVBSb0dMdnMKLS0tIDRNSUMzYWc2cENvdEhiQUZzK3By
+            RkQ3RUl5dFlnOFIwcjd2V1dDZGlWUzAKSjd9d4vNUVskdkPddHOLQazd1StK0sGC
+            zE8HFfB7rGVjc7qPP2ehe21G0tXtjFE5ahzLT0W4w6SPujP3lwBOXA==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age1rd2pax67da9fumz38avgzdqhxug02lw00h2y4zlkrrjjdnyr3e3srhxkd8
+    encrypted_regex: ^(data|stringData)
+    lastmodified: "2026-07-17T09:55:22Z"
+    mac: ENC[AES256_GCM,data:i4jeHwZ/GtMCKnpDdRjoqsMg7SFuSqdxjOdykC91BkLkSI9D24dQs7hH42Ir4L5QK5WGUM90TLn/V8Mei+EivibIzKck76k3Oa2cge9HvNtimElOBWr/BMv35egGBBMbLpdJpAX7DWNR6sI0Suk9oBnlnMQ6A0hxuwWNmwSkTKI=,iv:/iQQVa7IVXAODfv1T6V40aVMoPCiSC0hsGsN6ECla6A=,tag:nMCxdk6F01CRZoGKt5csYQ==,type:str]
+    version: 3.13.2
