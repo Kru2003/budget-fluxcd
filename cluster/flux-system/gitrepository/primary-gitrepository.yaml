@@ -1,0 +1,13 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: primary
+  namespace: flux-system
+spec:
+  interval: 10m
+  secretRef:
+    name: github-auth
+  url: ssh://git@github.com/Kru2003/budget-fluxcd.git
+  ref:
+    branch: main
+    
