@@ -34,22 +34,31 @@ spec:
       config:
         global:
           resolve_timeout: 5m
+          smtp_smarthost: "smtp.gmail.com:587"
+          smtp_from: "kruvaishnav20@gmail.com"
+          smtp_auth_username: "kruvaishnav20@gmail.com"
+          smtp_require_tls: false
+        inhibit_rules:
+          - source_match:
+              severity: "critical"
+            target_match:
+              severity: "warning"
+            equal:
+              - namespace
         route:
-          group_by: ["alertname", "cluster", "service"]
-          group_wait: 30s
-          group_interval: 5m
-          repeat_interval: 12h
           receiver: "mail"
           routes:
             - receiver: "mail"
-              matchers:
-                - severity=warning
-                - severity=critical
         receivers:
           - name: "mail"
             email_configs:
               - to: "kruvaishnav20@gmail.com"
-
+                send_resolved: true
+    defaultRules:
+      rules:
+        kubeControllerManager: false
+        kubeProxy: false
+        kubeSchedulerAlerting: false
     additionalPrometheusRulesMap:
       budget-app-alerts:
         groups:
@@ -73,3 +82,8 @@ spec:
               annotations:
                 summary: "Kubernetes Deployment {{ $labels.namespace }}/{{ $labels.deployment }} has been deleted."
                 description: "The 'kube_deployment_created' metric for deployment '{{ $labels.deployment }}' in namespace '{{ $labels.namespace }}' is no longer present. This indicates the Deployment has likely been deleted. Please verify."
+  valuesFrom:
+    - kind: Secret
+      name: smtp-auth
+      valuesKey: smtp_auth_password
+      targetPath: alertmanager.config.global.smtp_auth_password

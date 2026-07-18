@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: smtp-auth
+    namespace: monitoring
+stringData:
+    smtp_auth_password: ENC[AES256_GCM,data:98HS21dDSmhmvZT1JEWy7l4EfQ==,iv:QdHZWybNPh+1Kv4N6xaAEwkZjDIOjECexHNzFfNAcUA=,tag:/0gHBZe3HhRTXXxea9aEzA==,type:str]
+sops:
+    age:
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBpMjQzYTZqZVFPaUFkRWlk
+            NmMwWnc2L2tBRU1UOW9qcW85Qk9DRWNOM0MwCkN4TVNjYWFyTDMrM2o5QVhqQkJu
+            MjhQS0YvKzdWbVJnei9hanVabHVzc28KLS0tIGVMeDd4cnpQekFkSTZyU1JMMFhF
+            NGRqWStST0k0Mnk0cnlTN0IzT2Jjb3MKFy2uJFs1/vLNlF278mTLvaxB09+fNBS7
+            1Z8Go8Sx8WOUMzRFTku8BiyDTW3EjtJET+hBKXw4qknvD0J5RcCUaw==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age1rd2pax67da9fumz38avgzdqhxug02lw00h2y4zlkrrjjdnyr3e3srhxkd8
+    encrypted_regex: ^(data|stringData)
+    lastmodified: "2026-07-18T06:28:18Z"
+    mac: ENC[AES256_GCM,data:Dy7xKQGe9JpjJkDJfbU/0L2dTNGTERlPIhlwY6zhonMiV6P59gY8KN2wm4Qt0PkpSGErbvRMW/pqz2VMgftn6+zBPN+NO37oXblPtYwRDsQjoxOGQ3gliOVSs5lWB7gzFDik4kTpUv+VcLkm81bq87j2A9h3XdUvNFHRxeh2nzc=,iv:UYlN7tQAwbA39iRXNRE9WOiXU8GFv3m0RpgH2jKMLtE=,tag:dhVWTfn68DJXlkyUAYtuKA==,type:str]
+    version: 3.13.2
