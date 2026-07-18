@@ -37,7 +37,7 @@ spec:
           smtp_smarthost: "smtp.gmail.com:587"
           smtp_from: "kruvaishnav20@gmail.com"
           smtp_auth_username: "kruvaishnav20@gmail.com"
-          smtp_require_tls: false
+          smtp_require_tls: true
         inhibit_rules:
           - source_match:
               severity: "critical"
